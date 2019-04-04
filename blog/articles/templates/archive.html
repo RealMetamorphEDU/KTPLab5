@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Архив всех статей</title>
+    <link rel="stylesheet" href="/static/css/article.css" type="text/css">
+</head>
+<body class="archive">
+<div class="header">
+    <p class="center_pos"><img src="/static/img/dpb-logo.png"/></p>
+    <a href="/article/new">Создать статью</a>
+</div>
+<div class="archive">
+    {% for post in posts %}
+        <div class="one-post">
+            <a href="/article/{{ post.id }}/">
+                <h2 class="post-title">{{ post.title }}</h2></a>
+            <div class="article-info">
+                <div class="article-author">{{ post.author.username }}</div>
+                <div class="article-created-date">{{ post.created_date }}</div>
+            </div>
+            <p class="article-text">{{ post.get_excerpt }}</p>
+        </div>
+    {% endfor %}
+</div>
+</body>
+</html>
